@@ -1,0 +1,3225 @@
+<!DOCTYPE html>
+<html lang="om">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Jem'aa Barattoota Waliigalaa Masjida Tawbaa</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+
+:root{
+  --green:#075b3a;
+  --green2:#0b8050;
+  --green3:#eaf7f0;
+  --gold:#f0c94b;
+  --dark:#12352a;
+  --text:#173b2b;
+  --muted:#6a7c73;
+  --white:#fff;
+  --danger:#b3261e;
+  --warning:#d99a00;
+  --success:#188344;
+  --bg:#f4f8f5;
+  --border:#dfe9e3;
+  --shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
+
+a{
+  text-decoration:none;
+}
+
+button,
+input,
+textarea,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+  border:0;
+}
+
+/* ================= HEADER ================= */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:999;
+  background:rgba(7,91,58,.97);
+  color:white;
+  box-shadow:0 4px 20px rgba(0,0,0,.15);
+}
+
+nav{
+  max-width:1250px;
+  margin:auto;
+  min-height:70px;
+  padding:10px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-size:19px;
+  font-weight:800;
+  white-space:nowrap;
+}
+
+.logo-icon{
+  width:40px;
+  height:40px;
+  display:grid;
+  place-items:center;
+  background:rgba(255,255,255,.15);
+  border-radius:12px;
+  font-size:22px;
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:3px;
+}
+
+nav a{
+  color:white;
+  padding:8px 9px;
+  border-radius:8px;
+  font-size:13px;
+  transition:.2s;
+}
+
+nav a:hover{
+  background:rgba(255,255,255,.14);
+}
+
+.lang{
+  background:white;
+  color:var(--green);
+  border:0;
+  padding:8px 10px;
+  border-radius:8px;
+  font-weight:bold;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  min-height:78vh;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:70px 20px;
+  color:white;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(255,255,255,.10),transparent 30%),
+    radial-gradient(circle at 80% 80%,rgba(240,201,75,.10),transparent 30%),
+    linear-gradient(135deg,#064a31,#0c8a57);
+  position:relative;
+  overflow:hidden;
+}
+
+.hero:before{
+  content:"";
+  position:absolute;
+  width:350px;
+  height:350px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:50%;
+  right:-100px;
+  top:-100px;
+}
+
+.hero-content{
+  max-width:900px;
+  position:relative;
+}
+
+.badge{
+  display:inline-block;
+  background:rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.18);
+  padding:7px 14px;
+  border-radius:30px;
+  margin-bottom:20px;
+  font-size:14px;
+}
+
+.hero h1{
+  font-size:clamp(34px,6vw,64px);
+  line-height:1.1;
+  margin-bottom:20px;
+}
+
+.hero p{
+  max-width:760px;
+  margin:auto;
+  font-size:18px;
+  opacity:.95;
+}
+
+.hero-buttons{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:28px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 20px;
+  border-radius:9px;
+  font-weight:700;
+  transition:.2s;
+}
+
+.btn-primary{
+  background:var(--gold);
+  color:#183d2d;
+}
+
+.btn-primary:hover{
+  transform:translateY(-2px);
+}
+
+.btn-light{
+  color:white;
+  border:1px solid rgba(255,255,255,.4);
+  background:rgba(255,255,255,.08);
+}
+
+.btn-light:hover{
+  background:rgba(255,255,255,.16);
+}
+
+/* ================= GENERAL ================= */
+
+main{
+  max-width:1250px;
+  margin:auto;
+}
+
+section{
+  padding:75px 20px;
+}
+
+.title{
+  text-align:center;
+  margin-bottom:35px;
+}
+
+.title h2{
+  color:var(--green);
+  font-size:34px;
+  margin-bottom:8px;
+}
+
+.title p{
+  color:var(--muted);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:24px;
+  box-shadow:var(--shadow);
+}
+
+.card h3{
+  color:var(--green);
+  margin-bottom:9px;
+}
+
+.card-icon{
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  border-radius:13px;
+  background:var(--green3);
+  font-size:23px;
+  margin-bottom:15px;
+}
+
+.notice{
+  background:#fff9df;
+  border-left:5px solid var(--gold);
+  padding:16px 18px;
+  margin-bottom:12px;
+  border-radius:10px;
+}
+
+.form{
+  max-width:700px;
+  margin:auto;
+  background:white;
+  padding:28px;
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  border:1px solid var(--border);
+}
+
+label{
+  display:block;
+  margin:14px 0 6px;
+  font-weight:700;
+}
+
+input,
+textarea,
+select{
+  width:100%;
+  padding:12px 13px;
+  border:1px solid #cfdcd4;
+  border-radius:9px;
+  background:white;
+  color:var(--text);
+  outline:none;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  border-color:var(--green2);
+  box-shadow:0 0 0 3px rgba(11,128,80,.1);
+}
+
+textarea{
+  min-height:110px;
+  resize:vertical;
+}
+
+.submit{
+  background:var(--green);
+  color:white;
+  padding:12px 18px;
+  border-radius:9px;
+  margin-top:15px;
+  font-weight:700;
+}
+
+.submit:hover{
+  background:var(--green2);
+}
+
+.success,
+.error{
+  padding:13px;
+  border-radius:9px;
+  margin-top:14px;
+  display:none;
+}
+
+.success{
+  background:#e5f7eb;
+  color:#176b38;
+}
+
+.error{
+  background:#fde8e7;
+  color:#9b1c1c;
+}
+
+/* ================= ADMIN ================= */
+
+.admin-panel{
+  display:none;
+}
+
+.admin-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.admin-welcome{
+  color:var(--muted);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:16px;
+  margin:20px 0 30px;
+}
+
+.stat{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:22px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.stat-icon{
+  font-size:25px;
+}
+
+.stat-number{
+  font-size:35px;
+  font-weight:800;
+  color:var(--green);
+}
+
+.stat.pending .stat-number{
+  color:var(--warning);
+}
+
+.stat.accepted .stat-number{
+  color:var(--success);
+}
+
+.stat.declined .stat-number{
+  color:var(--danger);
+}
+
+/* ================= STUDENTS ================= */
+
+.student-row{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:13px;
+  padding:17px;
+  margin-bottom:12px;
+  box-shadow:0 4px 15px rgba(0,0,0,.04);
+}
+
+.student-name{
+  font-weight:800;
+  color:var(--green);
+  font-size:17px;
+}
+
+.student-info{
+  color:var(--muted);
+  font-size:14px;
+  margin-top:4px;
+}
+
+.status{
+  display:inline-block;
+  padding:5px 10px;
+  border-radius:30px;
+  font-size:12px;
+  font-weight:800;
+  margin-top:9px;
+}
+
+.status-pending{
+  background:#fff2c2;
+  color:#876600;
+}
+
+.status-accepted{
+  background:#d9f5e2;
+  color:#176b38;
+}
+
+.status-declined{
+  background:#fde0de;
+  color:#9b1c1c;
+}
+
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:12px;
+}
+
+.action{
+  color:white;
+  padding:8px 11px;
+  border-radius:7px;
+  font-size:13px;
+  font-weight:bold;
+}
+
+.accept{
+  background:var(--success);
+}
+
+.decline{
+  background:var(--warning);
+}
+
+.delete{
+  background:var(--danger);
+}
+
+/* ================= ATTENDANCE ================= */
+
+.attendance-toolbar{
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  margin-bottom:18px;
+}
+
+.attendance-summary{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:15px;
+}
+
+.summary-box{
+  padding:10px 15px;
+  border-radius:9px;
+  background:var(--bg);
+  font-weight:bold;
+}
+
+.table-wrap{
+  overflow-x:auto;
+  background:white;
+  border-radius:15px;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+}
+
+.attendance-table{
+  width:100%;
+  min-width:650px;
+  border-collapse:collapse;
+}
+
+.attendance-table th,
+.attendance-table td{
+  padding:13px;
+  border-bottom:1px solid #e7ede9;
+  text-align:left;
+}
+
+.attendance-table th{
+  background:var(--green);
+  color:white;
+}
+
+.present-btn,
+.absent-btn{
+  color:white;
+  padding:8px 11px;
+  border-radius:7px;
+  font-size:12px;
+  font-weight:bold;
+  margin:2px;
+}
+
+.present-btn{
+  background:var(--success);
+}
+
+.absent-btn{
+  background:var(--danger);
+}
+
+.attendance-active{
+  outline:3px solid rgba(7,91,58,.25);
+}
+
+/* ================= MANAGEMENT ================= */
+
+.manage-card{
+  background:white;
+  border:1px solid var(--border);
+  padding:20px;
+  border-radius:15px;
+  margin-bottom:12px;
+}
+
+.manage-actions{
+  margin-top:10px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  background:var(--dark);
+  color:white;
+  text-align:center;
+  padding:35px 20px;
+}
+
+footer p{
+  margin:5px 0;
+}
+
+.small{
+  font-size:13px;
+  color:var(--muted);
+}
+
+.loading{
+  text-align:center;
+  padding:25px;
+  color:var(--muted);
+}
+
+.empty{
+  text-align:center;
+  padding:25px;
+  color:var(--muted);
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:950px){
+
+nav{
+  flex-direction:column;
+}
+
+nav ul{
+  gap:2px;
+}
+
+}
+
+@media(max-width:600px){
+
+section{
+  padding:55px 14px;
+}
+
+.hero{
+  min-height:75vh;
+  padding:55px 15px;
+}
+
+.hero h1{
+  font-size:37px;
+}
+
+.hero p{
+  font-size:16px;
+}
+
+.title h2{
+  font-size:28px;
+}
+
+.form{
+  padding:20px;
+}
+
+.logo{
+  font-size:17px;
+}
+
+nav a{
+  font-size:12px;
+  padding:6px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+HEADER
+===================================================== -->
+
+<header>
+
+<nav>
+
+<div class="logo">
+<div class="logo-icon">🕌</div>
+Masjida Tawbaa
+</div>
+
+<ul>
+
+<li><a href="#home" data-i18n="home">Home</a></li>
+<li><a href="#about" data-i18n="about">About</a></li>
+<li><a href="#events" data-i18n="events">Events</a></li>
+<li><a href="#announcement" data-i18n="announcement">Announcement</a></li>
+<li><a href="#registration" data-i18n="registration">Registration</a></li>
+<li><a href="#comments" data-i18n="comments">Comments</a></li>
+<li><a href="#contact" data-i18n="contact">Contact</a></li>
+<li><a href="#admin">🔐 Admin</a></li>
+
+</ul>
+
+<select id="language" class="lang">
+
+<option value="om">Afaan Oromoo</option>
+<option value="am">አማርኛ</option>
+<option value="en">English</option>
+
+</select>
+
+</nav>
+
+</header>
+
+
+<!-- =====================================================
+HERO
+===================================================== -->
+
+<section id="home" class="hero">
+
+<div class="hero-content">
+
+<div class="badge">
+🕌 Masjida Tawbaa
+</div>
+
+<h1 data-i18n="siteTitle">
+Jem'aa Barattoota Waliigalaa Masjida Tawbaa
+</h1>
+
+<p data-i18n="welcome">
+Baga nagaan dhuftan. Website barattootaa fi hawaasa Masjida Tawbaa.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#registration" class="btn btn-primary">
+🎓 <span data-i18n="join">Galmee Barattootaa</span>
+</a>
+
+<a href="#about" class="btn btn-light">
+ℹ️ <span data-i18n="learn">Waa'ee Keenya</span>
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<main>
+
+<!-- =====================================================
+ABOUT
+===================================================== -->
+
+<section id="about">
+
+<div class="title">
+
+<h2 data-i18n="aboutTitle">
+Waa'ee Keenya
+</h2>
+
+<p data-i18n="aboutSub">
+Tokkummaa, barnoota fi tajaajila hawaasaa.
+</p>
+
+</div>
+
+<div class="grid">
+
+<div class="card">
+
+<div class="card-icon">
+🎯
+</div>
+
+<h3 data-i18n="mission">
+Kaayyoo
+</h3>
+
+<p data-i18n="missionText">
+Barattoota walitti fiduu, barnoota fi hojii hawaasummaa cimsuu.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+👥
+</div>
+
+<h3 data-i18n="leadership">
+Hoggansa
+</h3>
+
+<p>
+
+<b>Amiirri:</b> Yusuf Kedir
+
+<br>
+
+<b>Itti aanaan:</b> Murti Musa
+
+<br>
+
+<b>Barreessaa:</b> Arabu Hashim
+
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+🤝
+</div>
+
+<h3 data-i18n="values">
+Duudhaalee
+</h3>
+
+<p data-i18n="valuesText">
+Tokkummaa, amanamummaa, kabaja, barnoota fi tajaajila hawaasaa.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+EVENTS
+===================================================== -->
+
+<section id="events">
+
+<div class="title">
+
+<h2 data-i18n="eventsTitle">
+📅 Events / Sagantaalee
+</h2>
+
+<p data-i18n="eventsSub">
+Sagantaalee fi hojiiwwan keenya.
+</p>
+
+</div>
+
+<div id="eventsList" class="grid">
+
+<div class="loading">
+Loading...
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+ANNOUNCEMENTS
+===================================================== -->
+
+<section id="announcement">
+
+<div class="title">
+
+<h2 data-i18n="announcementTitle">
+📢 Beeksisa
+</h2>
+
+</div>
+
+<div id="announcementList">
+
+<div class="loading">
+Loading...
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+REGISTRATION
+===================================================== -->
+
+<section id="registration">
+
+<div class="title">
+
+<h2 data-i18n="registrationTitle">
+🎓 Galmee Barattootaa
+</h2>
+
+<p data-i18n="registrationSub">
+Galmee kee guuti; admin ni ilaala.
+</p>
+
+</div>
+
+<form id="registrationForm" class="form">
+
+<label data-i18n="fullName">
+Maqaa Guutuu
+</label>
+
+<input
+name="name"
+required
+autocomplete="name"
+>
+
+<label data-i18n="phone">
+Lakkoofsa Bilbilaa
+</label>
+
+<input
+name="phone"
+type="tel"
+required
+autocomplete="tel"
+>
+
+<label data-i18n="class">
+Kutaa / Level
+</label>
+
+<input
+name="level"
+required
+>
+
+<label data-i18n="note">
+Yaada dabalataa
+</label>
+
+<textarea name="note"></textarea>
+
+<button
+type="submit"
+class="submit"
+id="registerBtn"
+data-i18n="registerBtn">
+
+Galmeessi
+
+</button>
+
+<div id="regSuccess" class="success">
+
+✅ <span data-i18n="regSuccess">
+Galmeen milkaa'eera!
+</span>
+
+</div>
+
+<div id="regError" class="error"></div>
+
+</form>
+
+</section>
+
+
+<!-- =====================================================
+COMMENTS
+===================================================== -->
+
+<section id="comments">
+
+<div class="title">
+
+<h2 data-i18n="commentsTitle">
+💬 Yaada / Comments
+</h2>
+
+</div>
+
+<form id="commentForm" class="form">
+
+<label data-i18n="name">
+Maqaa
+</label>
+
+<input name="name" required>
+
+<label data-i18n="comment">
+Yaada
+</label>
+
+<textarea
+name="comment"
+required>
+</textarea>
+
+<button
+type="submit"
+class="submit"
+id="commentBtn"
+data-i18n="send">
+
+Ergi
+
+</button>
+
+<div id="commentError" class="error"></div>
+
+</form>
+
+<div
+id="commentsList"
+class="grid"
+style="margin-top:25px">
+
+<div class="loading">
+Loading...
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+CONTACT
+===================================================== -->
+
+<section id="contact">
+
+<div class="title">
+
+<h2 data-i18n="contactTitle">
+📞 Nu Qunnamaa
+</h2>
+
+</div>
+
+<div class="grid">
+
+<div class="card">
+
+<div class="card-icon">📧</div>
+
+<h3>Email</h3>
+
+<p>
+info@masjidatawbaa.example
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">📱</div>
+
+<h3 data-i18n="phoneLabel">
+Bilbila
+</h3>
+
+<p>
++251 __________
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">📍</div>
+
+<h3 data-i18n="location">
+Bakka
+</h3>
+
+<p>
+Masjida Tawbaa
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+ADMIN
+===================================================== -->
+
+<section id="admin">
+
+<div class="title">
+
+<h2>
+🔐 Admin Dashboard
+</h2>
+
+<p>
+Supabase secure administration
+</p>
+
+</div>
+
+
+<!-- LOGIN -->
+
+<div id="loginBox" class="form">
+
+<h3>
+Admin Login
+</h3>
+
+<label>
+Email
+</label>
+
+<input
+id="adminEmail"
+type="email"
+placeholder="admin@email.com"
+autocomplete="email"
+required
+>
+
+<label>
+Password
+</label>
+
+<input
+id="adminPassword"
+type="password"
+autocomplete="current-password"
+required
+>
+
+<button
+id="loginBtn"
+class="submit">
+
+🔐 Login
+
+</button>
+
+<div id="loginError" class="error"></div>
+
+</div>
+
+
+<!-- ADMIN PANEL -->
+
+<div id="adminPanel" class="admin-panel">
+
+<div class="admin-header">
+
+<div>
+
+<h2>
+📊 Dashboard
+</h2>
+
+<p
+id="adminWelcome"
+class="admin-welcome">
+</p>
+
+</div>
+
+<button
+id="logoutBtn"
+class="action delete">
+
+Logout
+
+</button>
+
+</div>
+
+
+<!-- STATISTICS -->
+
+<div class="stats">
+
+<div class="stat">
+
+<div class="stat-icon">
+👨‍🎓
+</div>
+
+<div>
+Total Students
+</div>
+
+<div
+id="totalStudents"
+class="stat-number">
+0
+</div>
+
+</div>
+
+
+<div class="stat pending">
+
+<div class="stat-icon">
+⏳
+</div>
+
+<div>
+Pending
+</div>
+
+<div
+id="pendingStudents"
+class="stat-number">
+0
+</div>
+
+</div>
+
+
+<div class="stat accepted">
+
+<div class="stat-icon">
+✅
+</div>
+
+<div>
+Accepted
+</div>
+
+<div
+id="acceptedStudents"
+class="stat-number">
+0
+</div>
+
+</div>
+
+
+<div class="stat declined">
+
+<div class="stat-icon">
+❌
+</div>
+
+<div>
+Declined
+</div>
+
+<div
+id="declinedStudents"
+class="stat-number">
+0
+</div>
+
+</div>
+
+</div>
+
+
+<!-- STUDENTS -->
+
+<div class="card">
+
+<h3>
+👨‍🎓 Student Management
+</h3>
+
+<input
+id="studentSearch"
+placeholder="🔍 Search name, phone or level..."
+style="margin-top:15px"
+>
+
+<div
+id="adminStudents"
+style="margin-top:18px">
+
+Loading...
+
+</div>
+
+</div>
+
+
+<!-- ATTENDANCE -->
+
+<div
+class="card"
+style="margin-top:25px">
+
+<h3>
+📋 Attendance
+</h3>
+
+<label>
+📅 Guyyaa
+</label>
+
+<input
+id="attendanceDate"
+type="date"
+>
+
+<div class="attendance-summary">
+
+<div class="summary-box">
+👨‍🎓 Total:
+<span id="attendanceTotal">0</span>
+</div>
+
+<div class="summary-box">
+🟢 Present:
+<span id="attendancePresent">0</span>
+</div>
+
+<div class="summary-box">
+🔴 Absent:
+<span id="attendanceAbsent">0</span>
+</div>
+
+</div>
+
+<button
+id="saveAttendanceBtn"
+class="submit">
+
+💾 Save Attendance
+
+</button>
+
+</div>
+
+
+<div
+class="table-wrap"
+style="margin-top:15px">
+
+<table class="attendance-table">
+
+<thead>
+
+<tr>
+
+<th>#</th>
+<th>Maqaa</th>
+<th>Level</th>
+<th>Attendance</th>
+
+</tr>
+
+</thead>
+
+<tbody id="attendanceBody">
+
+<tr>
+
+<td colspan="4">
+Loading...
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<!-- EVENTS MANAGEMENT -->
+
+<div
+class="card"
+style="margin-top:25px">
+
+<h3>
+📅 Manage Events
+</h3>
+
+<input
+id="newEvent"
+placeholder="Event name..."
+style="margin-top:12px"
+>
+
+<button
+id="addEventBtn"
+class="submit">
+
+➕ Add Event
+
+</button>
+
+<div
+id="adminEvents"
+style="margin-top:15px">
+</div>
+
+</div>
+
+
+<!-- ANNOUNCEMENT MANAGEMENT -->
+
+<div
+class="card"
+style="margin-top:20px">
+
+<h3>
+📢 Manage Announcements
+</h3>
+
+<input
+id="newAnnouncement"
+placeholder="Announcement..."
+style="margin-top:12px"
+>
+
+<button
+id="addAnnouncementBtn"
+class="submit">
+
+➕ Add Announcement
+
+</button>
+
+<div
+id="adminAnnouncements"
+style="margin-top:15px">
+</div>
+
+</div>
+
+
+<!-- COMMENTS MANAGEMENT -->
+
+<div
+class="card"
+style="margin-top:20px">
+
+<h3>
+💬 Manage Comments
+</h3>
+
+<div
+id="adminComments"
+style="margin-top:15px">
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+FOOTER
+===================================================== -->
+
+<footer>
+
+<p>
+© 2026 Jem'aa Barattoota Waliigalaa Masjida Tawbaa
+</p>
+
+<p data-i18n="footer">
+Tokkummaan humna keenya.
+</p>
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+SUPABASE CONFIG
+===================================================== */
+
+const SUPABASE_URL =
+"https://ewybuqssxxtmfzemyemv.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_EOVA7sgG_PjVoaL1-V-WJQ_OMIGRIrR";
+
+const supabaseClient =
+window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
+
+
+/* =====================================================
+HELPER
+===================================================== */
+
+function escapeHtml(value){
+
+return String(value ?? "")
+.replace(/[&<>"']/g,function(m){
+
+return {
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+}[m];
+
+});
+
+}
+
+
+/* =====================================================
+DATE
+===================================================== */
+
+function today(){
+
+const d=new Date();
+
+return d.getFullYear()+"-"+
+String(d.getMonth()+1).padStart(2,"0")+"-"+
+String(d.getDate()).padStart(2,"0");
+
+}
+
+document.getElementById("attendanceDate").value=today();
+
+
+/* =====================================================
+TRANSLATIONS
+===================================================== */
+
+const translations={
+
+om:{
+home:"Home",
+about:"About",
+events:"Events",
+announcement:"Announcement",
+registration:"Registration",
+comments:"Comments",
+contact:"Contact",
+siteTitle:"Jem'aa Barattoota Waliigalaa Masjida Tawbaa",
+welcome:"Baga nagaan dhuftan. Website barattootaa fi hawaasa Masjida Tawbaa.",
+join:"Galmee Barattootaa",
+learn:"Waa'ee Keenya",
+aboutTitle:"Waa'ee Keenya",
+aboutSub:"Tokkummaa, barnoota fi tajaajila hawaasaa.",
+mission:"Kaayyoo",
+missionText:"Barattoota walitti fiduu, barnoota fi hojii hawaasummaa cimsuu.",
+leadership:"Hoggansa",
+values:"Duudhaalee",
+valuesText:"Tokkummaa, amanamummaa, kabaja, barnoota fi tajaajila hawaasaa.",
+eventsTitle:"📅 Events / Sagantaalee",
+eventsSub:"Sagantaalee fi hojiiwwan keenya.",
+announcementTitle:"📢 Beeksisa",
+registrationTitle:"🎓 Galmee Barattootaa",
+registrationSub:"Galmee kee guuti; admin ni ilaala.",
+fullName:"Maqaa Guutuu",
+phone:"Lakkoofsa Bilbilaa",
+class:"Kutaa / Level",
+note:"Yaada dabalataa",
+registerBtn:"Galmeessi",
+regSuccess:"Galmeen milkaa'eera!",
+commentsTitle:"💬 Yaada / Comments",
+name:"Maqaa",
+comment:"Yaada",
+send:"Ergi",
+contactTitle:"📞 Nu Qunnamaa",
+phoneLabel:"Bilbila",
+location:"Bakka",
+footer:"Tokkummaan humna keenya."
+},
+
+am:{
+home:"መነሻ",
+about:"ስለ እኛ",
+events:"ዝግጅቶች",
+announcement:"ማስታወቂያ",
+registration:"ምዝገባ",
+comments:"አስተያየት",
+contact:"ያግኙን",
+siteTitle:"የመስጂድ ተውባ አጠቃላይ የተማሪዎች ማህበር",
+welcome:"እንኳን ወደ መስጂድ ተውባ የተማሪዎች ድረ-ገጽ በደህና መጡ።",
+join:"የተማሪ ምዝገባ",
+learn:"ስለ እኛ",
+aboutTitle:"ስለ እኛ",
+aboutSub:"አንድነት፣ ትምህርት እና ማህበራዊ አገልግሎት።",
+mission:"ዓላማ",
+missionText:"ተማሪዎችን ማስተባበር፣ ትምህርትንና ማህበራዊ ስራን ማጠናከር።",
+leadership:"አመራር",
+values:"እሴቶች",
+valuesText:"አንድነት፣ ታማኝነት፣ ክብር፣ ትምህርት እና ማህበራዊ አገልግሎት።",
+eventsTitle:"📅 ዝግጅቶች",
+eventsSub:"የእኛ ዝግጅቶች።",
+announcementTitle:"📢 ማስታወቂያ",
+registrationTitle:"🎓 የተማሪ ምዝገባ",
+registrationSub:"መረጃዎን ይሙሉ።",
+fullName:"ሙሉ ስም",
+phone:"ስልክ",
+class:"ክፍል / ደረጃ",
+note:"ተጨማሪ ማስታወሻ",
+registerBtn:"መዝግብ",
+regSuccess:"ምዝገባው ተሳክቷል!",
+commentsTitle:"💬 አስተያየት",
+name:"ስም",
+comment:"አስተያየት",
+send:"ላክ",
+contactTitle:"📞 ያግኙን",
+phoneLabel:"ስልክ",
+location:"አድራሻ",
+footer:"አንድነታችን ጥንካሬያችን ነው።"
+},
+
+en:{
+home:"Home",
+about:"About",
+events:"Events",
+announcement:"Announcement",
+registration:"Registration",
+comments:"Comments",
+contact:"Contact",
+siteTitle:"General Students Association of Masjid Tawbaa",
+welcome:"Welcome to the students and community website of Masjid Tawbaa.",
+join:"Student Registration",
+learn:"About Us",
+aboutTitle:"About Us",
+aboutSub:"Unity, education and community service.",
+mission:"Mission",
+missionText:"To connect students and strengthen education and community service.",
+leadership:"Leadership",
+values:"Values",
+valuesText:"Unity, trust, respect, education and community service.",
+eventsTitle:"📅 Events",
+eventsSub:"Our programs and activities.",
+announcementTitle:"📢 Announcements",
+registrationTitle:"🎓 Student Registration",
+registrationSub:"Complete the form; the admin will review it.",
+fullName:"Full Name",
+phone:"Phone Number",
+class:"Class / Level",
+note:"Additional Note",
+registerBtn:"Register",
+regSuccess:"Registration successful!",
+commentsTitle:"💬 Comments",
+name:"Name",
+comment:"Comment",
+send:"Send",
+contactTitle:"📞 Contact Us",
+phoneLabel:"Phone",
+location:"Location",
+footer:"Unity is our strength."
+}
+
+};
+
+
+/* =====================================================
+LANGUAGE
+===================================================== */
+
+const language =
+document.getElementById("language");
+
+function applyLanguage(lang){
+
+const t=translations[lang] || translations.om;
+
+document.documentElement.lang=lang;
+
+document
+.querySelectorAll("[data-i18n]")
+.forEach(el=>{
+
+const key=el.dataset.i18n;
+
+if(t[key]){
+el.textContent=t[key];
+}
+
+});
+
+localStorage.setItem("siteLanguage",lang);
+
+}
+
+language.addEventListener(
+"change",
+()=>applyLanguage(language.value)
+);
+
+language.value=
+localStorage.getItem("siteLanguage") || "om";
+
+applyLanguage(language.value);
+
+
+/* =====================================================
+LOAD EVENTS
+===================================================== */
+
+async function loadEvents(){
+
+const {data,error}=
+await supabaseClient
+.from("events")
+.select("*")
+.order("created_at",{ascending:false});
+
+const box=
+document.getElementById("eventsList");
+
+if(error){
+
+console.error(error);
+
+box.innerHTML=
+"<div class='empty'>Events loading error.</div>";
+
+return;
+
+}
+
+if(!data || !data.length){
+
+box.innerHTML=
+"<div class='empty'>Event hin jiru.</div>";
+
+return;
+
+}
+
+box.innerHTML=
+data.map(e=>`
+
+<div class="card">
+
+<div class="card-icon">
+📅
+</div>
+
+<h3>
+${escapeHtml(e.title)}
+</h3>
+
+<p class="small">
+Masjida Tawbaa
+</p>
+
+</div>
+
+`).join("");
+
+}
+
+
+/* =====================================================
+LOAD ANNOUNCEMENTS
+===================================================== */
+
+async function loadAnnouncements(){
+
+const {data,error}=
+await supabaseClient
+.from("announcements")
+.select("*")
+.order("created_at",{ascending:false});
+
+const box=
+document.getElementById("announcementList");
+
+if(error){
+
+console.error(error);
+
+box.innerHTML=
+"<div class='empty'>Announcement loading error.</div>";
+
+return;
+
+}
+
+if(!data || !data.length){
+
+box.innerHTML=
+"<div class='empty'>Beeksisni hin jiru.</div>";
+
+return;
+
+}
+
+box.innerHTML=
+data.map(a=>`
+
+<div class="notice">
+
+📢 <strong>
+${escapeHtml(a.message)}
+</strong>
+
+</div>
+
+`).join("");
+
+}
+
+
+/* =====================================================
+LOAD COMMENTS
+===================================================== */
+
+async function loadComments(){
+
+const {data,error}=
+await supabaseClient
+.from("comments")
+.select("*")
+.order("created_at",{ascending:false});
+
+const box=
+document.getElementById("commentsList");
+
+if(error){
+
+console.error(error);
+
+box.innerHTML=
+"<div class='empty'>Comments loading error.</div>";
+
+return;
+
+}
+
+if(!data || !data.length){
+
+box.innerHTML=
+"<div class='empty'>Comment hin jiru.</div>";
+
+return;
+
+}
+
+box.innerHTML=
+data.map(c=>`
+
+<div class="card">
+
+<div class="card-icon">
+💬
+</div>
+
+<h3>
+${escapeHtml(c.name)}
+</h3>
+
+<p>
+${escapeHtml(c.comment)}
+</p>
+
+</div>
+
+`).join("");
+
+}
+
+
+/* =====================================================
+REGISTRATION
+===================================================== */
+
+document
+.getElementById("registrationForm")
+.addEventListener("submit",async function(e){
+
+e.preventDefault();
+
+const form=e.target;
+const btn=document.getElementById("registerBtn");
+
+const data=new FormData(form);
+
+const student={
+
+name:String(data.get("name") || "").trim(),
+
+phone:String(data.get("phone") || "").trim(),
+
+level:String(data.get("level") || "").trim(),
+
+note:String(data.get("note") || "").trim(),
+
+status:"pending"
+
+};
+
+const errorBox=
+document.getElementById("regError");
+
+const successBox=
+document.getElementById("regSuccess");
+
+errorBox.style.display="none";
+
+btn.disabled=true;
+btn.textContent="Sending...";
+
+const {error}=
+await supabaseClient
+.from("students")
+.insert(student);
+
+btn.disabled=false;
+btn.textContent=
+translations[language.value].registerBtn;
+
+if(error){
+
+console.error(error);
+
+errorBox.textContent=
+"Galmeen hin milkoofne: "+
+error.message;
+
+errorBox.style.display="block";
+
+return;
+
+}
+
+form.reset();
+
+successBox.style.display="block";
+
+setTimeout(()=>{
+
+successBox.style.display="none";
+
+},5000);
+
+});
+
+
+/* =====================================================
+COMMENTS FORM
+===================================================== */
+
+document
+.getElementById("commentForm")
+.addEventListener("submit",async function(e){
+
+e.preventDefault();
+
+const form=e.target;
+const btn=document.getElementById("commentBtn");
+
+const data=new FormData(form);
+
+const errorBox=
+document.getElementById("commentError");
+
+errorBox.style.display="none";
+
+btn.disabled=true;
+btn.textContent="Sending...";
+
+const {error}=
+await supabaseClient
+.from("comments")
+.insert({
+
+name:String(data.get("name") || "").trim(),
+
+comment:String(data.get("comment") || "").trim()
+
+});
+
+btn.disabled=false;
+btn.textContent=
+translations[language.value].send;
+
+if(error){
+
+console.error(error);
+
+errorBox.textContent=
+"Comment erguu hin milkoofne: "+
+error.message;
+
+errorBox.style.display="block";
+
+return;
+
+}
+
+form.reset();
+
+await loadComments();
+
+});
+
+
+/* =====================================================
+ADMIN LOGIN
+===================================================== */
+
+document
+.getElementById("loginBtn")
+.addEventListener(
+"click",
+adminLogin
+);
+
+
+async function adminLogin(){
+
+const email=
+document
+.getElementById("adminEmail")
+.value
+.trim();
+
+const password=
+document
+.getElementById("adminPassword")
+.value;
+
+const errorBox=
+document.getElementById("loginError");
+
+errorBox.style.display="none";
+
+if(!email || !password){
+
+errorBox.textContent=
+"Email fi password guuti.";
+
+errorBox.style.display="block";
+
+return;
+
+}
+
+const {data,error}=
+await supabaseClient.auth
+.signInWithPassword({
+
+email:email,
+
+password:password
+
+});
+
+if(error){
+
+console.error(error);
+
+errorBox.textContent=
+"Login hin milkoofne: "+
+error.message;
+
+errorBox.style.display="block";
+
+return;
+
+}
+
+const user=data.user;
+
+const {data:profile,error:profileError}=
+await supabaseClient
+.from("profiles")
+.select("*")
+.eq("id",user.id)
+.single();
+
+if(profileError || !profile){
+
+await supabaseClient.auth.signOut();
+
+errorBox.textContent=
+"Profile admin hin argamne.";
+
+errorBox.style.display="block";
+
+return;
+
+}
+
+if(profile.role !== "admin"){
+
+await supabaseClient.auth.signOut();
+
+errorBox.textContent=
+"Account kun Admin miti.";
+
+errorBox.style.display="block";
+
+return;
+
+}
+
+showAdmin(profile);
+
+}
+
+
+/* =====================================================
+SHOW ADMIN
+===================================================== */
+
+function showAdmin(profile){
+
+document.getElementById("loginBox")
+.style.display="none";
+
+document.getElementById("adminPanel")
+.style.display="block";
+
+document.getElementById("adminWelcome")
+.textContent=
+"👋 Baga nagaan dhuftan, "+
+(profile.full_name || "Admin");
+
+loadAdminDashboard();
+
+}
+
+
+/* =====================================================
+ADMIN DASHBOARD
+===================================================== */
+
+async function loadAdminDashboard(){
+
+await loadStudentStatistics();
+
+await loadAdminStudents();
+
+await loadAttendance();
+
+await loadAdminEvents();
+
+await loadAdminAnnouncements();
+
+await loadAdminComments();
+
+}
+
+
+/* =====================================================
+STUDENT STATISTICS
+===================================================== */
+
+async function loadStudentStatistics(){
+
+const {data,error}=
+await supabaseClient
+.from("students")
+.select("id,status");
+
+if(error){
+
+console.error(error);
+return;
+
+}
+
+const students=data || [];
+
+document.getElementById("totalStudents")
+.textContent=students.length;
+
+document.getElementById("pendingStudents")
+.textContent=
+students.filter(s=>
+(s.status || "pending")==="pending"
+).length;
+
+document.getElementById("acceptedStudents")
+.textContent=
+students.filter(s=>
+s.status==="accepted"
+).length;
+
+document.getElementById("declinedStudents")
+.textContent=
+students.filter(s=>
+s.status==="declined"
+).length;
+
+}
+
+
+/* =====================================================
+STUDENT MANAGEMENT
+===================================================== */
+
+let allStudents=[];
+
+async function loadAdminStudents(){
+
+const {data,error}=
+await supabaseClient
+.from("students")
+.select("*")
+.order("created_at",{ascending:true});
+
+if(error){
+
+console.error(error);
+
+document.getElementById("adminStudents")
+.innerHTML=
+"<div class='empty'>Students loading error.</div>";
+
+return;
+
+}
+
+allStudents=data || [];
+
+renderStudents(allStudents);
+
+}
+
+
+function renderStudents(students){
+
+const box=
+document.getElementById("adminStudents");
+
+if(!students.length){
+
+box.innerHTML=
+"<div class='empty'>Barataan galmaa'e hin jiru.</div>";
+
+return;
+
+}
+
+box.innerHTML=
+
+students.map((s,index)=>{
+
+const status=
+s.status || "pending";
+
+let statusText="⏳ Pending";
+
+if(status==="accepted")
+statusText="✅ Accepted";
+
+if(status==="declined")
+statusText="❌ Declined";
+
+return `
+
+<div class="student-row">
+
+<div class="student-name">
+
+${index+1}. ${escapeHtml(s.name)}
+
+</div>
+
+<div class="student-info">
+
+📞 ${escapeHtml(s.phone)}
+
+<br>
+
+📚 ${escapeHtml(s.level)}
+
+<br>
+
+📅 ${s.created_at
+? new Date(s.created_at).toLocaleString()
+: ""}
+
+</div>
+
+<span class="status status-${status}">
+
+${statusText}
+
+</span>
+
+${s.note ? `
+
+<div class="student-info">
+
+📝 ${escapeHtml(s.note)}
+
+</div>
+
+` : ""}
+
+<div class="actions">
+
+${
+status!=="accepted"
+
+?
+
+`<button
+class="action accept"
+onclick="changeStudentStatus('${s.id}','accepted')">
+
+✅ Accept
+
+</button>`
+
+:""
+
+}
+
+${
+status!=="declined"
+
+?
+
+`<button
+class="action decline"
+onclick="changeStudentStatus('${s.id}','declined')">
+
+❌ Decline
+
+</button>`
+
+:""
+
+}
+
+<button
+class="action delete"
+onclick="deleteStudent('${s.id}')">
+
+🗑️ Delete
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}).join("");
+
+}
+
+
+/* =====================================================
+SEARCH
+===================================================== */
+
+document
+.getElementById("studentSearch")
+.addEventListener("input",function(){
+
+const query=
+this.value
+.toLowerCase()
+.trim();
+
+const filtered=
+allStudents.filter(s=>
+
+String(s.name || "")
+.toLowerCase()
+.includes(query)
+
+||
+
+String(s.phone || "")
+.toLowerCase()
+.includes(query)
+
+||
+
+String(s.level || "")
+.toLowerCase()
+.includes(query)
+
+);
+
+renderStudents(filtered);
+
+});
+
+
+/* =====================================================
+CHANGE STATUS
+===================================================== */
+
+async function changeStudentStatus(id,status){
+
+const {error}=
+await supabaseClient
+.from("students")
+.update({
+status:status
+})
+.eq("id",id);
+
+if(error){
+
+alert(
+"Status jijjiiruu hin dandeenye:\n"+
+error.message
+);
+
+return;
+
+}
+
+await loadStudentStatistics();
+
+await loadAdminStudents();
+
+await loadAttendance();
+
+}
+
+
+/* =====================================================
+DELETE STUDENT
+===================================================== */
+
+async function deleteStudent(id){
+
+if(!confirm(
+"Barataa kana guutumaan guutuutti haqaa?"
+)){
+
+return;
+
+}
+
+const {error}=
+await supabaseClient
+.from("students")
+.delete()
+.eq("id",id);
+
+if(error){
+
+alert(error.message);
+
+return;
+
+}
+
+await loadStudentStatistics();
+
+await loadAdminStudents();
+
+await loadAttendance();
+
+}
+
+
+/* =====================================================
+ATTENDANCE
+===================================================== */
+
+let attendanceStudents=[];
+let attendanceRecords={};
+
+
+async function loadAttendance(){
+
+const date=
+document.getElementById("attendanceDate").value;
+
+if(!date)return;
+
+const {data:students,error:studentError}=
+await supabaseClient
+.from("students")
+.select("id,name,phone,level")
+.eq("status","accepted")
+.order("name",{ascending:true});
+
+if(studentError){
+
+console.error(studentError);
+
+return;
+
+}
+
+attendanceStudents=
+students || [];
+
+
+const {data:attendance,error:attendanceError}=
+await supabaseClient
+.from("attendance")
+.select("*")
+.eq("attendance_date",date);
+
+if(attendanceError){
+
+console.error(attendanceError);
+
+return;
+
+}
+
+attendanceRecords={};
+
+(attendance || []).forEach(record=>{
+
+attendanceRecords[
+String(record.student_id)
+]=record.present;
+
+});
+
+renderAttendance();
+
+}
+
+
+function renderAttendance(){
+
+const body=
+document.getElementById("attendanceBody");
+
+if(!attendanceStudents.length){
+
+body.innerHTML=`
+
+<tr>
+
+<td colspan="4">
+
+Accepted student hin jiru.
+
+</td>
+
+</tr>
+
+`;
+
+updateAttendanceSummary();
+
+return;
+
+}
+
+body.innerHTML=
+
+attendanceStudents.map((student,index)=>{
+
+const key=String(student.id);
+
+const present=
+attendanceRecords[key]===true;
+
+const absent=
+attendanceRecords[key]===false;
+
+return `
+
+<tr>
+
+<td>${index+1}</td>
+
+<td>
+<strong>
+${escapeHtml(student.name)}
+</strong>
+</td>
+
+<td>
+${escapeHtml(student.level)}
+</td>
+
+<td>
+
+<button
+class="present-btn ${
+present ? "attendance-active":""
+}"
+onclick="setAttendance('${student.id}',true)">
+
+🟢 Jira
+
+</button>
+
+<button
+class="absent-btn ${
+absent ? "attendance-active":""
+}"
+onclick="setAttendance('${student.id}',false)">
+
+🔴 Hin jiru
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+}).join("");
+
+updateAttendanceSummary();
+
+}
+
+
+function setAttendance(studentId,present){
+
+attendanceRecords[
+String(studentId)
+]=present;
+
+renderAttendance();
+
+}
+
+
+function updateAttendanceSummary(){
+
+const total=
+attendanceStudents.length;
+
+const present=
+Object.values(attendanceRecords)
+.filter(v=>v===true)
+.length;
+
+const absent=
+Object.values(attendanceRecords)
+.filter(v=>v===false)
+.length;
+
+document.getElementById("attendanceTotal")
+.textContent=total;
+
+document.getElementById("attendancePresent")
+.textContent=present;
+
+document.getElementById("attendanceAbsent")
+.textContent=absent;
+
+}
+
+
+/* =====================================================
+SAVE ATTENDANCE
+===================================================== */
+
+document
+.getElementById("saveAttendanceBtn")
+.addEventListener(
+"click",
+saveAttendance
+);
+
+
+async function saveAttendance(){
+
+const date=
+document.getElementById("attendanceDate")
+.value;
+
+if(!date){
+
+alert("Guyyaa filadhu.");
+
+return;
+
+}
+
+if(!attendanceStudents.length){
+
+alert("Accepted student hin jiru.");
+
+return;
+
+}
+
+const rows=
+attendanceStudents
+
+.filter(student=>
+attendanceRecords[
+String(student.id)
+] !== undefined
+)
+
+.map(student=>({
+
+student_id:student.id,
+
+attendance_date:date,
+
+present:
+attendanceRecords[
+String(student.id)
+]
+
+}));
+
+if(!rows.length){
+
+alert(
+"Jalqaba Jira ykn Hin jiru filadhu."
+);
+
+return;
+
+}
+
+const {error}=
+await supabaseClient
+.from("attendance")
+.upsert(
+rows,
+{
+onConflict:
+"student_id,attendance_date"
+}
+);
+
+if(error){
+
+console.error(error);
+
+alert(
+"Attendance save hin milkoofne:\n"+
+error.message
+);
+
+return;
+
+}
+
+alert(
+"✅ Attendance guyyaa "+
+date+
+" milkaa'inaan kuufame."
+);
+
+await loadAttendance();
+
+}
+
+
+/* =====================================================
+DATE CHANGE
+===================================================== */
+
+document
+.getElementById("attendanceDate")
+.addEventListener(
+"change",
+loadAttendance
+);
+
+
+/* =====================================================
+EVENT MANAGEMENT
+===================================================== */
+
+document
+.getElementById("addEventBtn")
+.addEventListener(
+"click",
+addEvent
+);
+
+
+async function addEvent(){
+
+const input=
+document.getElementById("newEvent");
+
+const title=
+input.value.trim();
+
+if(!title)return;
+
+const {error}=
+await supabaseClient
+.from("events")
+.insert({
+title:title
+});
+
+if(error){
+
+alert(error.message);
+
+return;
+
+}
+
+input.value="";
+
+await loadEvents();
+
+await loadAdminEvents();
+
+}
+
+
+/* =====================================================
+ADMIN EVENTS
+===================================================== */
+
+async function loadAdminEvents(){
+
+const {data,error}=
+await supabaseClient
+.from("events")
+.select("*")
+.order("created_at",{ascending:false});
+
+if(error){
+
+console.error(error);
+return;
+
+}
+
+const box=
+document.getElementById("adminEvents");
+
+if(!data || !data.length){
+
+box.innerHTML=
+"<div class='empty'>Event hin jiru.</div>";
+
+return;
+
+}
+
+box.innerHTML=
+
+data.map(e=>`
+
+<div class="manage-card">
+
+<strong>
+📅 ${escapeHtml(e.title)}
+</strong>
+
+<div class="manage-actions">
+
+<button
+class="action delete"
+onclick="deleteEvent('${e.id}')">
+
+🗑️ Delete
+
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+/* =====================================================
+DELETE EVENT
+===================================================== */
+
+async function deleteEvent(id){
+
+if(!confirm("Event kana haqaa?"))
+return;
+
+const {error}=
+await supabaseClient
+.from("events")
+.delete()
+.eq("id",id);
+
+if(error){
+
+alert(error.message);
+return;
+
+}
+
+await loadEvents();
+
+await loadAdminEvents();
+
+}
+
+
+/* =====================================================
+ANNOUNCEMENT MANAGEMENT
+===================================================== */
+
+document
+.getElementById("addAnnouncementBtn")
+.addEventListener(
+"click",
+addAnnouncement
+);
+
+
+async function addAnnouncement(){
+
+const input=
+document.getElementById("newAnnouncement");
+
+const message=
+input.value.trim();
+
+if(!message)return;
+
+const {error}=
+await supabaseClient
+.from("announcements")
+.insert({
+message:message
+});
+
+if(error){
+
+alert(error.message);
+return;
+
+}
+
+input.value="";
+
+await loadAnnouncements();
+
+await loadAdminAnnouncements();
+
+}
+
+
+/* =====================================================
+ADMIN ANNOUNCEMENTS
+===================================================== */
+
+async function loadAdminAnnouncements(){
+
+const {data,error}=
+await supabaseClient
+.from("announcements")
+.select("*")
+.order("created_at",{ascending:false});
+
+if(error){
+
+console.error(error);
+return;
+
+}
+
+const box=
+document.getElementById("adminAnnouncements");
+
+if(!data || !data.length){
+
+box.innerHTML=
+"<div class='empty'>Beeksisa hin jiru.</div>";
+
+return;
+
+}
+
+box.innerHTML=
+
+data.map(a=>`
+
+<div class="manage-card">
+
+<strong>
+📢 ${escapeHtml(a.message)}
+</strong>
+
+<div class="manage-actions">
+
+<button
+class="action delete"
+onclick="deleteAnnouncement('${a.id}')">
+
+🗑️ Delete
+
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+/* =====================================================
+DELETE ANNOUNCEMENT
+===================================================== */
+
+async function deleteAnnouncement(id){
+
+if(!confirm("Beeksisa kana haqaa?"))
+return;
+
+const {error}=
+await supabaseClient
+.from("announcements")
+.delete()
+.eq("id",id);
+
+if(error){
+
+alert(error.message);
+return;
+
+}
+
+await loadAnnouncements();
+
+await loadAdminAnnouncements();
+
+}
+
+
+/* =====================================================
+ADMIN COMMENTS
+===================================================== */
+
+async function loadAdminComments(){
+
+const {data,error}=
+await supabaseClient
+.from("comments")
+.select("*")
+.order("created_at",{ascending:false});
+
+if(error){
+
+console.error(error);
+return;
+
+}
+
+const box=
+document.getElementById("adminComments");
+
+if(!data || !data.length){
+
+box.innerHTML=
+"<div class='empty'>Comment hin jiru.</div>";
+
+return;
+
+}
+
+box.innerHTML=
+
+data.map(c=>`
+
+<div class="manage-card">
+
+<strong>
+${escapeHtml(c.name)}
+</strong>
+
+<p style="margin-top:5px">
+${escapeHtml(c.comment)}
+</p>
+
+<div class="manage-actions">
+
+<button
+class="action delete"
+onclick="deleteComment('${c.id}')">
+
+🗑️ Delete
+
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+/* =====================================================
+DELETE COMMENT
+===================================================== */
+
+async function deleteComment(id){
+
+if(!confirm("Comment kana haqaa?"))
+return;
+
+const {error}=
+await supabaseClient
+.from("comments")
+.delete()
+.eq("id",id);
+
+if(error){
+
+alert(error.message);
+return;
+
+}
+
+await loadComments();
+
+await loadAdminComments();
+
+}
+
+
+/* =====================================================
+LOGOUT
+===================================================== */
+
+document
+.getElementById("logoutBtn")
+.addEventListener(
+"click",
+logout
+);
+
+
+async function logout(){
+
+await supabaseClient.auth.signOut();
+
+document.getElementById("adminPanel")
+.style.display="none";
+
+document.getElementById("loginBox")
+.style.display="block";
+
+document.getElementById("adminEmail")
+.value="";
+
+document.getElementById("adminPassword")
+.value="";
+
+}
+
+
+/* =====================================================
+CHECK SESSION
+===================================================== */
+
+async function checkSession(){
+
+const {data}=await supabaseClient.auth
+.getUser();
+
+if(!data.user){
+
+return;
+
+}
+
+const {data:profile,error}=
+await supabaseClient
+.from("profiles")
+.select("*")
+.eq("id",data.user.id)
+.single();
+
+if(error || !profile){
+
+return;
+
+}
+
+if(profile.role==="admin"){
+
+showAdmin(profile);
+
+}
+
+}
+
+
+/* =====================================================
+START
+===================================================== */
+
+async function start(){
+
+await loadEvents();
+
+await loadAnnouncements();
+
+await loadComments();
+
+await checkSession();
+
+}
+
+start();
+
+</script>
+
+</body>
+</html>
