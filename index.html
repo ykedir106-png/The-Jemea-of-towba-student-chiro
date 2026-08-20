@@ -3148,7 +3148,7 @@ document.getElementById("adminPassword")
 CHECK SESSION
 ===================================================== */
 
-async function checkSession(){
+(async function checkSession(){
 
 const {data}=await supabaseClient.auth
 .getUser();
@@ -3185,7 +3185,7 @@ showAdmin(profile);
 START
 ===================================================== */
 
-async function start(){
+(async function start){
 
 await loadEvents();
 
@@ -3193,7 +3193,7 @@ await loadAnnouncements();
 
 await loadComments();
 
-await checkSession();
+await checkSession);
 
 }
 
