@@ -3125,7 +3125,7 @@ logout
 );
 
 
-async function logout(){
+(async function logout){
 
 await supabaseClient.auth.signOut();
 
@@ -3141,42 +3141,31 @@ document.getElementById("adminEmail")
 document.getElementById("adminPassword")
 .value="";
 
-}
+}<form id="adminLoginForm" onsubmit="event.preventDefault(); adminLogin();">
+
+  <label>Email</label>
+  <input
+    type="email"
+    id="adminEmail"
+    placeholder="admin@email.com"
+    required
+  >
+
+  <label>Password</label>
+  <input
+    type="password"
+    id="adminPassword"
+    required
+  >
+
+  <button type="submit">
+    🔐 Login
+  </button>
+
+</form>
 
 
-/* =====================================================
-CHECK SESSION
-===================================================== */
 
-(async function checkSession(){
-
-const {data}=await supabaseClient.auth
-.getUser();
-
-if(!data.user){
-
-return;
-
-}
-
-const {data:profile,error}=
-await supabaseClient
-.from("profiles")
-.select("*")
-.eq("id",data.user.id)
-.single();
-
-if(error || !profile){
-
-return;
-
-}
-
-if(profile.role==="admin"){
-
-showAdmin(profile);
-
-}
 <footer>
   <p>© 2026 Jem’aa Barattoota Waliigalaa Masjida Tawbaa</p>
   <p>Tokkummaan humna keenya.</p>
